@@ -1,4 +1,5 @@
 # Whiteboard_Clock
+README
 
 Group 7 - Jonas B., Signe, Thomas T & Tim
 Mercantec - Viborg College of Technology
