@@ -1,23 +1,45 @@
-
+  
   /*
-  Group 7 - Jonas B., Signe, Thomas T & Tim
-  Mercantec - Viborg College of Technology
-  06/09-2018
+    Group 7 - Jonas B., Signe, Thomas T & Tim
+    Mercantec - Viborg College of Technology
+    17/09-2018
   */
+  
+  //First piece of code for the stepper motor, tested with stepper motor, it works.
 
-  //First piece of code for the stepper motor, not tested yet.
-  
+  // Includes the Stepper Library 
   #include <Stepper.h>
-  
-  Stepper myStepper(100,8,9,10,11);
+
+  // A few variables that might be useful later on
+  const int stepsPerRev = 200;
+  const int standardSpeed = 60;
+  const int fullRev = 200;
+  const int halfRev = 100;
+
+  // Creates a Stepper object. Parameters: (rev, A+, A-, B+, B-)
+  Stepper myStepper(stepsPerRev, 50, 51, 52, 53);
+
+  // Variable for counting amount of steps taken
+  int stepCount = 0;
   
   void setup() {
-    // put your setup code here, to run once:
-    myStepper.setSpeed(60);
+    // Set the speed of the stepper motor, and start the serial.
+    myStepper.setSpeed(standardSpeed);
     Serial.begin(9600);
   }
   
   void loop() {
-    // put your main code here, to run repeatedly:
-    myStepper.step(100);
+    //motorStep(fullRev);
+    delay(1000);
+  }
+  
+  void motorStep(int steps) {
+    // Function for stepping a given amount of steps, and print in Serial how many  in total.
+    int _steps = steps;
+
+    myStepper.step(_steps);
+    
+    stepCount += _steps;
+    Serial.print("Steps: ");
+    Serial.println(stepCount);
   }
