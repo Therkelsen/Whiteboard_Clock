@@ -9,7 +9,7 @@
   
 //------------------------------------------------------------------- START OF CODE -------------------------------------------------------------------//
   
-  //------------------- Include the LiquidCrystal library (LC lib)--------------------//
+  //------------------- Include the LiquidCrystal library --------------------//
   #include <LiquidCrystal.h>
   
   //------------------- Create integers for holding LCD pins --------------------//

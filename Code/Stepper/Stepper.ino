@@ -7,39 +7,51 @@
   
   //First piece of code for the stepper motor, tested with stepper motor, it works.
 
-  // Includes the Stepper Library 
+  //------------------- Include the Stepper library)--------------------//
   #include <Stepper.h>
 
-  // A few variables that might be useful later on
-  const int stepsPerRev = 200;
-  const int standardSpeed = 60;
-  const int fullRev = 200;
-  const int halfRev = 100;
+  //------------------- A few ints for the motor to use --------------------//
+  
+  const int stepsPerRev = 200; //steps per revolution
+  const int standardSpd = 60; //seconds per revolution
+  const int fullRev = 200; //steps
+  const int halfRev = 100; //steps
 
-  // Creates a Stepper object. Parameters: (rev, A+, A-, B+, B-)
+  int stepCount = 0;
+
+  //------------------- Creates a Stepper object. Parameters: (rev, A+, A-, B+, B-) --------------------//
   Stepper myStepper(stepsPerRev, 50, 51, 52, 53);
 
-  // Variable for counting amount of steps taken
-  int stepCount = 0;
-  
+  //------------------- Everything that needs to be run once, goes here --------------------//
   void setup() {
-    // Set the speed of the stepper motor, and start the serial.
-    myStepper.setSpeed(standardSpeed);
+    myStepper.setSpeed(standardSpd);
     Serial.begin(9600);
   }
   
+  //------------------- Everything in here is run once every frame --------------------//
   void loop() {
-    //motorStep(fullRev);
+    int stepLength = 100; //millimeters (placeholder)
+    int gearDiameter = 20; //millimeters (placeholder)
+    motorStep(stepLength, gearDiameter);
     delay(1000);
   }
   
-  void motorStep(int steps) {
-    // Function for stepping a given amount of steps, and print in Serial how many  in total.
-    int _steps = steps;
-
-    myStepper.step(_steps);
+  void motorStep(int _stepLength, int _gearDiameter) {
+    //------------------- Move the motor the given length --------------------//
+    int stepLength = _stepLength;
+    int gearDiameter = _gearDiameter;
     
-    stepCount += _steps;
+    float stepSize = 1.8; //degrees
+    int gearCircumf = PI * gearDiameter; //millimeters
+    int steps = (stepLength*360)/gearCircumf;
+    
+    myStepper.step(steps);
+
+    //------------------- Keep track of steps taken --------------------//
+    stepCount += steps;
     Serial.print("Steps: ");
     Serial.println(stepCount);
   }
+
+
+  
