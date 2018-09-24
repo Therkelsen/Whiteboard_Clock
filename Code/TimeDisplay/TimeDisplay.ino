@@ -22,8 +22,8 @@
   
   //------------------- Create integers for holding time --------------------//
   int s = 0;
-  int m = 0;
-  int h = 0;
+  int m = 10;
+  int h = 11;
 
   //------------------- Create integers for customizing the clock --------------------//
   int secToMin = 60;
@@ -58,6 +58,14 @@
     //------------------- Every time a second has passed, add one to the s variable --------------------//
     if (currentMillis - clockMillis >= second) {
       s++;
+      lcd.setCursor(2, 0);
+      lcd.print(":");
+      //------------------- Blinking colon --------------------//
+      if (currentMillis - colonMillis >= 2 * second) {
+        lcd.setCursor(2, 0);
+        lcd.print(" ");
+        colonMillis = currentMillis;
+      }
       clockMillis = currentMillis;
     }
     
@@ -93,18 +101,6 @@
       lcd.setCursor(0, 0);
       lcd.print(h);
     }
-    
-    //------------------- Blinking colon --------------------//
-    if (currentMillis - clockMillis >= second) {
-      lcd.setCursor(2, 0);
-      lcd.print(":");
-      if (currentMillis - colonMillis >= 2 * second) {
-        lcd.setCursor(2, 0);
-        lcd.print(" ");
-        colonMillis = currentMillis;
-      }
-      clockMillis = currentMillis;
-    } 
     
     //------------------- Display minutes --------------------//
     if (m < 10) {
