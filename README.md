@@ -15,3 +15,6 @@ Test code made for using an LCD display later on, tested, and it works, too.
 v0.3 - 20/09-2018
 Working clock using the LCD and user set start time has been made.
 "DisplayTest.ino" removed, no longer has any use.
+
+v0.3.1 - 24/09-2018
+A little debugging done on the DisplayTest code, added files needed later on, and images.
