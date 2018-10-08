@@ -259,60 +259,55 @@ void lines () {
 
   motorStep(-50,gearDiameter,2);
  
-  if(draw1 == 1) {
-    motorStep(penD,gearDiameter, 3);
-  }
-
-  if(draw2 == 1) {
+  if(draw2 == 0) {
+    motorStep(-penD,gearDiameter, 3);
+  } 
+  else if(draw2 == 1 && draw1 == 0) {
     motorStep(penD,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,1);
  
-  if(draw2 == 1) {
-    motorStep(penD,gearDiameter, 3);
-  }
-
-  if(draw3 == 1) {
+  if(draw3 == 0) {
+    motorStep(-penD,gearDiameter, 3);
+  } 
+  else if(draw3 == 1 && draw2 == 0) {
     motorStep(penD,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,2);
  
-  if(draw3 == 1) {
-    motorStep(penD,gearDiameter, 3);
-  }
-
-  if(draw4 == 1) {
+  if(draw4 == 0) {
+    motorStep(-penD,gearDiameter, 3);
+  } 
+  else if(draw4 == 1 && draw3 == 0) {
     motorStep(penD,gearDiameter, 3);
   }
 
   motorStep(-50,gearDiameter,1);
  
-  if(draw4 == 1) {
-    motorStep(penD,gearDiameter, 3);
-  }
-
-  if(draw5 == 1) {
+  if(draw5 == 0) {
+    motorStep(-penD,gearDiameter, 3);
+  } 
+  else if(draw5 == 1 && draw4 == 0) {
     motorStep(penD,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,2);
  
-  if(draw5 == 1) {
-    motorStep(penD,gearDiameter, 3);
-  }
-  if(draw6 == 1) {
+  if(draw6 == 0) {
+    motorStep(-penD,gearDiameter, 3);
+  } 
+  else if(draw6 == 1 && draw5 == 0) {
     motorStep(penD,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,1);
  
-  if(draw6 == 1) {
-    motorStep(penD,gearDiameter, 3);
-  }
-
-  if(draw7 == 1) {
+  if(draw7 == 0) {
+    motorStep(-penD,gearDiameter, 3);
+  } 
+  else if(draw7 == 1 && draw6 == 0) {
     motorStep(penD,gearDiameter, 3);
   }
 
