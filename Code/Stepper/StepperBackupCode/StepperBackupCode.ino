@@ -65,8 +65,6 @@
     } else if (stepper == 4) {  
       pen.step(steps);
       penStepCount += steps;
-    } else {
-      break;
     }
   }
 
@@ -86,9 +84,7 @@
     } else if (stepper == 4) {  
       pen.step(-penStepCount);
       penStepCount = 0;
-    } else {
-      break;
-    }  
+    }
   }
   
   
