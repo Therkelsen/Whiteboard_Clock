@@ -13,14 +13,16 @@
   
 
   //First piece of code for the stepper motor, tested with stepper motor, it works.
+  #ifndef Step_h
+  #define Step_h
 
+  class Step {
   
-
   //------------------- Include the Stepper library--------------------//
 
   #include <Stepper.h>
-
-
+  #include "Arduino.h"
+  
   //------------------- A few ints for the motor to use --------------------//
 
   const int stepsPerRev = 200; //steps per revolution
@@ -35,7 +37,9 @@
   int eraserStepCount = 0;
   int penStepCount = 0;
 
-  const int penD = 10;
+  const int penDown = 10;
+  const int r2Digit = 0;  //Placeholder
+  const int r4Digit = 0;  //Placeholder
 
   int draw1;
   int draw2;
@@ -122,9 +126,36 @@
       
     }  
   }
+
+void wipe (int len) {
+  if (len == 1) {
+    motorStep(r2Digit, gearDiameter, 4);
+    motorReset(4);
+  } else {
+    motorStep(r4Digit, gearDiameter, 4);
+    motorReset(4);
+  }
+}
+
+
+
+
+
+  
 //------------------- Set draw-values for number given in "tal", draws in digitplace for number giving in "digit" --------------------//
 void draw (int tal, int digittt) {
-  if(tal == 1) {
+  if(tal == 0) {
+   draw1 = 1;
+   draw2 = 1;
+   draw3 = 1;
+   draw4 = 0;
+   draw5 = 1;
+   draw6 = 1;
+   draw7 = 1;
+
+   digit(digittt);
+   
+  } else if(tal == 1) {
    draw1 = 1;
    draw2 = 0;
    draw3 = 0;
@@ -254,72 +285,72 @@ void digit(int digitt) {
 //------------------- Move the pen, deciding if to draw or not by the giving draw-values --------------------//
 void lines () {
   if(draw1 == 1) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 
   motorStep(-50,gearDiameter,2);
  
   if(draw2 == 0) {
-    motorStep(-penD,gearDiameter, 3);
+    motorStep(-penDown,gearDiameter, 3);
   } 
   else if(draw2 == 1 && draw1 == 0) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,1);
  
   if(draw3 == 0) {
-    motorStep(-penD,gearDiameter, 3);
+    motorStep(-penDown,gearDiameter, 3);
   } 
   else if(draw3 == 1 && draw2 == 0) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,2);
  
   if(draw4 == 0) {
-    motorStep(-penD,gearDiameter, 3);
+    motorStep(-penDown,gearDiameter, 3);
   } 
   else if(draw4 == 1 && draw3 == 0) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 
   motorStep(-50,gearDiameter,1);
  
   if(draw5 == 0) {
-    motorStep(-penD,gearDiameter, 3);
+    motorStep(-penDown,gearDiameter, 3);
   } 
   else if(draw5 == 1 && draw4 == 0) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,2);
  
   if(draw6 == 0) {
-    motorStep(-penD,gearDiameter, 3);
+    motorStep(-penDown,gearDiameter, 3);
   } 
   else if(draw6 == 1 && draw5 == 0) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 
   motorStep(50,gearDiameter,1);
  
   if(draw7 == 0) {
-    motorStep(-penD,gearDiameter, 3);
+    motorStep(-penDown,gearDiameter, 3);
   } 
   else if(draw7 == 1 && draw6 == 0) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 
   motorStep(-50,gearDiameter,2);
  
   if(draw7 == 1) {
-    motorStep(penD,gearDiameter, 3);
+    motorStep(penDown,gearDiameter, 3);
   }
 }
+}
 
-
-
+#endif
 
 
 
