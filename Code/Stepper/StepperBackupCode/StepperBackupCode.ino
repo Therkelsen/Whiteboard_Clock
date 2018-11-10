@@ -7,7 +7,7 @@
   
   //First piece of code for the stepper motor, tested with stepper motor, it works.
   
-  //------------------- Include the Stepper library--------------------//
+  //------------------- Include the Stepper library --------------------//
   #include <Stepper.h>
   
   //------------------- A few ints for the motor to use --------------------//

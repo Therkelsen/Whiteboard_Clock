@@ -6,12 +6,10 @@
   */
 
   //Working code for a concept of a clock on the LCD display.
-  
-//------------------------------------------------------------------- START OF CODE -------------------------------------------------------------------//
-  
+ 
   //------------------- Include the LiquidCrystal library --------------------//
   #include <LiquidCrystal.h>
-  #include <
+  #include <Step.h>
   
   //------------------- Create integers for holding LCD pins --------------------//
   int RS = 1;
@@ -32,7 +30,7 @@
   int minToHour = 60;
   int hourToDay = 24;
   
-  //------------------- Create variables for a timer. --------------------//
+  //------------------- Create variables for a timer --------------------//
   long startMillis;
   long currentMillis;
   long clockMillis;
@@ -85,7 +83,7 @@
       ph = h;
     }
     
-    //------------------- Every time a day has passed, set h to zero. --------------------//
+    //------------------- Every time a day has passed, set h to zero --------------------//
     if (h == hourToDay) {
       h = 0;
     }
@@ -691,6 +689,3 @@
       }
     }   
   }
-  
-//------------------------------------------------------------------- END OF CODE -------------------------------------------------------------------//
-  

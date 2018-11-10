@@ -1,24 +1,25 @@
 #ifndef Step_h
 #define Step_h
 
-#include "Arduino_h"
-#include <Stepper.h>
+//#include "Arduino_h"
+#include "Stepper.h"
+
 class Step {
   public:
-    Step(); 
+    Step();
     void motorStep ();
     void motorReset ();
     void wipe ();
     void draw ();
     void digit ();
     void lines ();
-    
+
   private:
     const int stepsPerRev = 200; //steps per revolution
     const int standardSpd = 60; //seconds per revolution
     const int fullRev = 200; //steps
     const int halfRev = 100; //steps
-  
+
     float gearDiameter = 12.22; //millimeters (placeholder)
 
     int xAxisStepCount = 0;
@@ -47,4 +48,3 @@ class Step {
 
 
 #endif
-
